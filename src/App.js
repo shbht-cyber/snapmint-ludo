@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Ludo from './Ludo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const [dice , setDice] = useState(0)
+
+  function handleDiceRoll () {
+    const num = Math.floor(Math.random() * 6 + 1);
+    setDice(num)
+  }
+  return <div style={{
+    textAlign: 'center'
+  }}>
+    <h1>Dice value : {dice}</h1>
+    <button onClick={handleDiceRoll}>Roll</button>
+    <Ludo num={dice}/>
+  </div>
 }
 
 export default App;
